@@ -9,19 +9,14 @@ function SavedRoutes() {
     return (
         <Container fluid>
           <Row>
-            <Col size="md-12">
+            <Col size="md-4">
               <Jumbotron>
                 <h1>
-                  Routes
+                  Saved Routes
                 </h1>
               </Jumbotron>
             </Col>
-          </Row>
-          <Row>
-            <Col size="md-6">
-              <h1>Saved Routes Here</h1>
-            </Col>
-            <Col size="md-6">
+            <Col size="md-8">
               <h1>Graphs go here</h1>
             </Col>
           </Row>
