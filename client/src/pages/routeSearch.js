@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
-//import { Input, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
 
 function RouteSearch() {
     return (
@@ -13,20 +13,18 @@ function RouteSearch() {
               <Jumbotron>
                 <h1>Search Page</h1>
               </Jumbotron>
-                <p>Searches go here</p>
-              {/* <form>
+              <form>
                 <Input
-                  onChange={handleInputChange}
-                  name="Location"
-                  placeholder="Location"
+                  // onChange={handleInputChange}
                 />
                 <FormBtn
-                  disabled={!(formObject.location)}
-                  onClick={handleFormSubmit}
+                  // disabled={!(formObject.location)}
+                  // onClick={handleFormSubmit}
                 >
-                  Submit Location
+                  Search Location
                 </FormBtn>
-              </form> */}
+              </form>
+              <p>Searches go here</p>
             </Col>
             <Col size="md-6">
               <Jumbotron>

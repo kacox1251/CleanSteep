@@ -32,4 +32,14 @@ router.put("/routes/:id", function(req, res) {
     })
 })
 
+router.delete("/routes/:id", function(req, res) {
+    db.Routes.deleteOne({_id: req.params.id})
+    .then(function(data) {
+        res.json(data);
+    })
+    .catch(function(err) {
+        throw err;
+    })
+})
+
 module.exports = router;
