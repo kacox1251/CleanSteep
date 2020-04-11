@@ -3,42 +3,39 @@ const Schema = mongoose.Schema;
 
 const RouteSchema = new Schema({
     routeID: {
-      type: String
+      type: Number
     },
   
     routeName: {
       type: String
     },
-  
+
     routeLocation: {
-      type: Array
-    },
-  
-    routeType: {
-      type: String
+      lat: {type: Number},
+      long: {type: Number}
     },
 
     routeDifficulty: {
       type: Number
     },
 
-    routePitch: {
-      type: Number
-    },
     routeRating: {
-      comments: {
-        type: String
-      },
       completed: {
-        type: Boolean
+        type: Boolean,
+        default: false,
+        required: false
+      },
+      comments: {
+        type: String,
+        default: "",
+        required: false
       },
       rating: {
-        type: Number
+        type: Number,
+        default: 0,
+        required: false
       }
     },
-    routeImg: {
-      type: String
-    }
   });
 
   const Route = mongoose.model("Route", RouteSchema);
