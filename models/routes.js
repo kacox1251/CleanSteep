@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const RouteSchema = new Schema({
     routeID: {
-      type: String
+      type: Number
     },
   
     routeName: {
@@ -22,14 +22,17 @@ const RouteSchema = new Schema({
     routeRating: {
       completed: {
         type: Boolean,
+        default: false,
         required: false
       },
       comments: {
         type: String,
+        default: "",
         required: false
       },
       rating: {
         type: Number,
+        default: 0,
         required: false
       }
     },
