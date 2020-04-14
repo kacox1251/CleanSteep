@@ -16,7 +16,7 @@ const RouteSchema = new Schema({
     },
 
     routeDifficulty: {
-      type: Number
+      type: String
     },
 
     routeRating: {

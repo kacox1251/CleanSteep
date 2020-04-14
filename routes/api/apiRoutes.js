@@ -14,6 +14,7 @@ router.get('/routes',function(req, res) {
 });
 
 router.post("/routes", function(req, res) {
+    console.log(req.body)
     db.Routes.create(req.body)
     .then(function(data) {
         res.json(data);
@@ -50,11 +51,9 @@ router.get("/locations", function(req, res) {
     axios.get(queryUrl)
         .then(function(data) {
             const { lat, lng: lon } = data.data.results[0].locations[0].latLng;
-            console.log(lat, lon);
 
             axios.get(`https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=${lat}&lon=${lon}&maxDistance=10&minDiff=5.6&maxDiff=5.10&key=${process.env.MP_API_KEY}`)
             .then(mtnData => {
-                console.log(mtnData.data);
                 res.json(mtnData.data.routes)
             })
             .catch(function(err) {
