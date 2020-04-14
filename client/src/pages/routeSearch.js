@@ -106,7 +106,6 @@ function RouteSearch() {
           </Row>
         </Container>
       );
-  
 }  
+
 export default RouteSearch;
-  
