@@ -1,13 +1,23 @@
 import React from "react";
+import Image from "../Image";
+import "../../styles/Header.css";
+import Background from "./images/Mountains2.jpg";
 
-function Nav() {
+var headerStyle = {
+  // backgroundImage: `url(${Background})`
+}
+
+function Header() {
   return (
-    <div className="jumbotron jumbotron-fluid pageTitle">
+    <div className="jumbotron jumbotron-fluid pageTitle" style={ headerStyle }>
       <div className="container">
-        <h1 className="display-4 pageTitle">Clean Steep</h1>
+        <h1 className="display-4 header">
+          Clean Steep
+          <Image></Image>
+        </h1>
       </div>
     </div>
   );
 }
 
-export default Nav;
+export default Header;

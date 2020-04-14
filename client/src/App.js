@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RouteSearch from "./pages/routeSearch";
 import SavedRoutes from "./pages/savedRoutes";
+import Home from "./pages/home";
 import Login from "./pages/login";
+import Signup from "./pages/signup";
 import Header from "./components/Header";
 
 function App() {
@@ -11,7 +13,13 @@ function App() {
     <div>
       <Header />
       <Switch>
-        <Route exact path={["/", "/login"]}>
+        <Route exact path={ "/" }>
+          <Home />
+        </Route>
+        <Route exact path={ "/signup"}>
+          <Signup />
+        </Route>
+        <Route exact path='/login'>
           <Login />
         </Route>
         <Route exact path="/search">

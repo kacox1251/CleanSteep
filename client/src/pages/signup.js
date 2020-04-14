@@ -6,7 +6,7 @@ import Jumbotron from "../components/Jumbotron";
 import { LoginInput, InputFormBtn } from "../components/Form";
 import API from "../utils/API";
 
-function Login() {
+function Signup() {
 
   const [userInput, setUserInput] = useState({});
 
@@ -14,16 +14,20 @@ function Login() {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setUserInput({...userInput, [name]: value});
-    console.log(userInput)
+    console.log(userInput);
   };
   
   // When the form is submitted, search the API for routes
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log("email: " + userInput.email);
+    console.log("password: " + userInput.password);
     if (userInput.email && userInput.password) {
-      API.login(userInput)
-        .then(() => {
-          window.location.assign("/search");
+      API.register(userInput)
+        .then(res => {
+          console.log('res', res)
+          alert('You are now registered! Please login')
+          window.location.assign('/login')
         })
         .catch(e => {
           console.log("error!", e);
@@ -36,7 +40,7 @@ function Login() {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
           </Jumbotron>
         </Col>
       </Row>
@@ -58,7 +62,7 @@ function Login() {
             <InputFormBtn
               onClick={handleFormSubmit}
             >
-            Submit
+            Sign Up
             </InputFormBtn>
           </form>
         </Col>
@@ -67,4 +71,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
