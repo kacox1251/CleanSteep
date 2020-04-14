@@ -9,11 +9,26 @@ export function Input(props) {
     );
   }
 
+export function LoginInput(props) {
+  return (
+    <div className="form-group">
+      <input className="form-control" {...props} />
+    </div>
+  );
+}
 
 export function FormBtn({ handleFormSubmit, children }) {
     return (
       <div>
         <button type="button" className="btn btn-secondary" onClick={handleFormSubmit}>{ children }</button>
       </div>
+    );
+  }
+
+export function InputFormBtn(props) {
+    return (
+      <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+        {props.children}
+      </button>
     );
   }
