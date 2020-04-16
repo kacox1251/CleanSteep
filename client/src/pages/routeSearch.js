@@ -42,12 +42,17 @@ function RouteSearch() {
         return a.id === key
       })
 
+      console.log(filtered[0])
       API.saveRoute({
         routeID: filtered[0].id,
         routeName: filtered[0].name,
+        routeType: filtered[0].type,
+        routeImage: filtered[0].imgSmall,
+        routePitch: filtered[0].pitches,
         routeLocation: {
           lat: filtered[0].latitude,
-          long: filtered[0].longitude
+          long: filtered[0].longitude,
+          location: filtered[0].location
         },
         routeDifficulty: filtered[0].rating,
       })
