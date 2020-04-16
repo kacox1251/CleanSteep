@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { LoginInput, InputFormBtn } from "../components/Form";
 import API from "../utils/API";
+import "../styles/Header.css";
 
 function Login() {
 
@@ -36,7 +37,7 @@ function Login() {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>Login</h1>
+            <h1 className="pageTitle">Login</h1>
           </Jumbotron>
         </Col>
       </Row>

@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { LoginInput, InputFormBtn } from "../components/Form";
 import API from "../utils/API";
+import "../styles/Header.css";
 
 function Signup() {
 
@@ -40,7 +41,7 @@ function Signup() {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>Sign Up</h1>
+            <h1 className="pageTitle">Sign Up</h1>
           </Jumbotron>
         </Col>
       </Row>
