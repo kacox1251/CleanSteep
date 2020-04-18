@@ -7,8 +7,8 @@ import { LogoutBtn } from "../components/Form";
 import { Link } from 'react-router-dom';
 import Saves from "../components/Saved";
 import API from "../utils/API";
-// import { Graph } from "../components/Graph";
 import * as d3 from "d3";
+import "../styles/SavedRoutes.css";
 
 function SavedRoutes() {
 
@@ -190,9 +190,11 @@ function SavedRoutes() {
             )}
             </Col>
             <Col size="md-7">
-              <h1>Completed Routes</h1>
-              <p>will need to filter for complete when setup</p>
-              <div id="graph"></div>
+              <div className="centered">
+                <h1>Completed Routes</h1>
+                <p>will need to filter for complete when setup</p>
+                <div id="graph"></div>
+              </div>
             </Col>
 
             {/* <Saves ></Saves> */}
