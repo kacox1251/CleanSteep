@@ -29,8 +29,8 @@ function SavedRoutes() {
                 <h1>
                   Saved Routes
                 </h1>
-                <Link to="/search" className="mr-1" >
-                  <button type="button" className="btn btn-success btn-lg">
+                <Link to="/search" >
+                  <button type="button" className="btn btn-success">
                     Search Routes
                   </button>
                 </Link>

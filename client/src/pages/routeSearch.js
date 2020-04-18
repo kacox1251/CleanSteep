@@ -77,8 +77,8 @@ function RouteSearch() {
             <Col size="md-6">
               <Jumbotron>
                 <h1>Search Page</h1>
-                <Link to="/routes" className="btn btn-success">
-                  <button type="button" className="btn btn-success btn-lg">
+                <Link to="/routes" >
+                  <button type="button" className="btn btn-success">
                     Saved Routes
                   </button>
                 </Link>
