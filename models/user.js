@@ -18,7 +18,9 @@ const UserSchema = new Schema({
       trim: true,
       required: "Password is Required",
       validate: [({ length }) => length >= 6, "Password should be longer."]
-    }
+    },
+
+    routes: [{ type: Schema.Types.ObjectId, ref: "Route" }]
   });
 
   // Define schema methods

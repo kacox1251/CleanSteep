@@ -4,19 +4,23 @@ const db = require("../../models")
 const axios = require("axios")
 
 router.get('/routes',function(req, res) {
-  db.Routes.find({})
+    // console.log("req.user", req.user)
+  db.Routes.find({ user: req.user })
   .then(function(data) {
+      console.log("data", data)
       res.json(data);
   })
   .catch(function(err) {
+    //   console.log("error", err)
       throw err;
   })
 });
 
 router.post("/routes", function(req, res) {
-    console.log(req.body)
-    db.Routes.create(req.body)
+    console.log("req.user", req.user)
+    db.Routes.create({...req.body, user: req.user })
     .then(function(data) {
+        // console.log("data", data)
         res.json(data);
     })
     .catch(function(err) {

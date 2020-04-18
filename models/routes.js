@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
 const RouteSchema = new Schema({
@@ -10,9 +11,22 @@ const RouteSchema = new Schema({
       type: String
     },
 
+    routeType: {
+      type: String
+    },
+
+    routeImage: {
+      type: String
+    },
+
+    routePitch: {
+      type: Number
+    },
+
     routeLocation: {
       lat: {type: Number},
-      long: {type: Number}
+      long: {type: Number},
+      location: {type: Array}
     },
 
     routeDifficulty: {
@@ -36,6 +50,11 @@ const RouteSchema = new Schema({
         required: false
       }
     },
+
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
   });
 
   const Route = mongoose.model("Route", RouteSchema);
