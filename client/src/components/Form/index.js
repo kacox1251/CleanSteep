@@ -32,3 +32,11 @@ export function InputFormBtn(props) {
       </button>
     );
   }
+
+export function LogoutBtn(props) {
+  return (
+    <button {...props} style={{ marginLeft: 5 }} className="btn btn-success">
+      {props.children}
+    </button>
+  );
+}

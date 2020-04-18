@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "../Image";
 import "../../styles/Header.css";
-import Background from "./images/Mountains2.jpg";
+import Background from "./images/Rocks.jpg";
 
 var headerStyle = {
-  // backgroundImage: `url(${Background})`
+  backgroundImage: `url(${Background})`
 }
 
 function Header() {

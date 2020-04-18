@@ -3,10 +3,24 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+import { LogoutBtn } from "../components/Form";
+import { Link } from 'react-router-dom';
 import Saves from "../components/Saved";
 import API from "../utils/API";
 
 function SavedRoutes() {
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    API.logout()
+    .then(() => {
+      window.location.assign("/");
+    })
+    .catch(e => {
+      console.log("error!", e);
+    });
+
+  }
 
   // const [place, setPlace] = useState({ city: "", state: "" });
   const [savedRoutes, setSavedRoutes] = useState({});
@@ -43,6 +57,14 @@ function SavedRoutes() {
                 <h1>
                   Saved Routes
                 </h1>
+                <Link to="/search" >
+                  <button type="button" className="btn btn-success">
+                    Search Routes
+                  </button>
+                </Link>
+                <LogoutBtn onClick={handleLogout}>
+                  Logout
+                </LogoutBtn>
               </Jumbotron>
             </Col>
             <Col size="md-8">
