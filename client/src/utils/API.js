@@ -17,8 +17,14 @@ export default {
         return axios.delete("/api/data/routes/" + id);
     },
 
-    changeRating: function(id) {
-        return axios.put("/api/data/routes/" + id);
+    changeComplete: function({id, completed}) {
+      console.log("this here", id)
+        return axios.put("/api/data/routes/" + id, completed);
+    },
+
+    changeRating: function(id, rating) {
+      console.log("this here", id)
+        return axios.put("/api/data/routes/" + id, rating);
     },
 
     // register a user

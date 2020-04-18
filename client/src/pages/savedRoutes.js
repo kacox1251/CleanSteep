@@ -24,6 +24,8 @@ function SavedRoutes() {
 
   }
 
+
+
   // const [place, setPlace] = useState({ city: "", state: "" });
   const [savedRoutes, setSavedRoutes] = useState({});
   // const { city, state } = place;
@@ -33,6 +35,39 @@ function SavedRoutes() {
         setSavedRoutes(res.data);
         createGraph(res.data);
       }).catch(err => console.log(err));
+  }
+
+  const markComplete = (route) => {
+    const id = route._id
+    const completed = {
+      routeRating: {
+        completed: true
+      }
+    };
+    
+    API.changeComplete({ id, completed })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch(err => console.log(err));
+  }
+
+  const rateRoute = (route) => {
+    const num = [1, 2, 3, 4, 5]
+    const id = route._id
+
+    
+    const rating = {
+      routeRating: {
+        rating: 0
+      }
+    };
+    
+    API.changeComplete({ id, rating })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch(err => console.log(err));
   }
 
   function handleDelete(id) {
@@ -173,6 +208,7 @@ function SavedRoutes() {
               <div>
                 {savedRoutes.map(route => (
                   <Saves key={route._id}
+                    id={route._id}
                     image={route.routeImage}
                     name={route.routeName}
                     type={route.RouteType}
@@ -182,6 +218,7 @@ function SavedRoutes() {
                     lat={route.routeLocation.longitude}
                     long={route.routeLocation.latitude}
                     handleDelete={() => handleDelete(route._id)}
+                    markComplete={() => markComplete(route)}
                   />
                 ))}
               </div>
