@@ -2,4 +2,5 @@
     height: 140px;
     float: right;
     padding-bottom: 60px;
+    z-index: 9999;
 }

@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
-import { Input, FormBtn } from "../components/Form";
+import { Input, FormBtn, LogoutBtn } from "../components/Form";
+import { Link } from 'react-router-dom';
 import Searches from "../components/Searched";
 import API from "../utils/API";
 
@@ -58,12 +59,32 @@ function RouteSearch() {
       .catch(err => console.log(err));
     }
 
+    const handleLogout = (e) => {
+      e.preventDefault();
+      API.logout()
+      .then(() => {
+        window.location.assign("/");
+      })
+      .catch(e => {
+        console.log("error!", e);
+      });
+
+    }
+
     return (
         <Container fluid>
           <Row>
             <Col size="md-6">
               <Jumbotron>
                 <h1>Search Page</h1>
+                <Link to="/routes" className="btn btn-success">
+                  <button type="button" className="btn btn-success btn-lg">
+                    Saved Routes
+                  </button>
+                </Link>
+                <LogoutBtn onClick={handleLogout}>
+                  Logout
+                </LogoutBtn>
               </Jumbotron>
               <form>
                 <Input
