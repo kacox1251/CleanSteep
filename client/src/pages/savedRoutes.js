@@ -28,12 +28,15 @@ function SavedRoutes() {
 
   // const [place, setPlace] = useState({ city: "", state: "" });
   const [savedRoutes, setSavedRoutes] = useState({});
+  let completedRoutes;
   // const { city, state } = place;
+
   function loadRoutes() {
     API.getRoute()
       .then(res => {
         setSavedRoutes(res.data);
         createGraph(res.data);
+        console.log("res.data", res.data);
       }).catch(err => console.log(err));
   }
 
@@ -48,6 +51,8 @@ function SavedRoutes() {
     API.changeComplete({ id, completed })
       .then((res) => {
         console.log(res)
+        // refreshes window to create new completed graph
+        window.location.reload(false);
       })
       .catch(err => console.log(err));
   }
@@ -83,8 +88,29 @@ function SavedRoutes() {
 
   function createGraph(data) {
     let routeGrades = [];
+    let graphedRoutes;
+    let routeOptions = document.getElementById("routeOptions").value;
+    document.getElementById("graph").innerHTML = "";
 
-    data.forEach(function(d) { // forEach iterates through an array 
+    console.log("routeOptions", routeOptions);
+    console.log(data);
+    if(data === undefined) {
+      return;
+    } 
+    if (routeOptions === "complete") {
+      graphedRoutes = data.filter(function(route) {
+        document.getElementById("graphTitle").innerHTML = "Completed Routes";
+        return route.routeRating.completed;
+      });
+    } else {
+      graphedRoutes = data.filter(function(route) {
+        document.getElementById("graphTitle").innerHTML = "Incomplete Routes";
+        return !route.routeRating.completed;
+      });
+    }
+    console.log("Array to graph: ", graphedRoutes);
+
+    graphedRoutes.forEach(function(d) { // forEach iterates through an array 
       console.log(d.routeDifficulty);
       routeGrades[d.routeDifficulty] = (routeGrades[d.routeDifficulty] || 0) + 1; // create new item if it doesn't exist
     });
@@ -178,7 +204,6 @@ function SavedRoutes() {
       var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
       return (midangle < Math.PI ? 'start' : 'end')
     })
-
   }
 
   useEffect(() => {
@@ -228,9 +253,12 @@ function SavedRoutes() {
             </Col>
             <Col size="md-7">
               <div className="centered">
-                <h1>Completed Routes</h1>
-                <p>will need to filter for complete when setup</p>
-                <div id="graph"></div>
+                <select id="routeOptions" onChange={() => createGraph(savedRoutes)}>
+                  <option value="complete">Completed Routes</option>
+                  <option value="incomplete">Incomplete Routes</option>
+                </select>
+                <h1 id="graphTitle">Completed Routes</h1>
+                <div id="graph"></div> 
               </div>
             </Col>
 
