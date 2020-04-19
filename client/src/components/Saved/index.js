@@ -1,6 +1,26 @@
 import React from "react";
+import Rating from 'react-rating';
+import API from "../../utils/API"
 
 function Saves(props) {
+
+    function onRatingChange(number) {
+        const id = props.id              
+        const rating = {
+            routeRating: {
+                rating: number
+            }
+        };
+        
+        API.changeRating({ id, rating })
+            .then((res) => {
+                // console.log(res)
+                console.log("Rating changed")
+            })
+            .catch(err => console.log(err));
+    }
+
+
     return (
         <div className="card mb-3" style={{ maxWidth: 540}} data-id={props.id} data-lat={props.lat} data-long={props.long}>
             <div className="row no-gutters">
@@ -19,11 +39,12 @@ function Saves(props) {
                         <button style={{ marginLeft: 5}} type="button" className="btn btn-outline-dark" onClick={props.markComplete}><i className="fa fa-check-square"></i></button>
                         <button style={{ marginLeft: 5}} type="button" className="btn btn-outline-dark" onClick={props.handleDelete} aria-label="Delete"><i className="fa fa-trash"></i></button>
                         <div>
-                            <span className="fa fa-star checked" data-rating="1"></span>
-                            <span className="fa fa-star checked" data-rating="2"></span>
-                            <span className="fa fa-star checked" data-rating="3"></span>
-                            <span className="fa fa-star checked" data-rating="4"></span>
-                            <span className="fa fa-star" data-rating="5"></span>
+                            <Rating
+                                onChange={onRatingChange}
+                                initialRating={props.rating}
+                                emptySymbol="fa fa-star-o fa-2x"
+                                fullSymbol="fa fa-star fa-2x"
+                            />
                         </div>
                     </div>
                 </div>

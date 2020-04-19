@@ -1,7 +1,5 @@
 // Route Search
-
 import React, { useState, useEffect } from "react";
-
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn, LogoutBtn } from "../components/Form";
@@ -73,7 +71,6 @@ function RouteSearch() {
       .catch(e => {
         console.log("error!", e);
       });
-
     }
 
     return (

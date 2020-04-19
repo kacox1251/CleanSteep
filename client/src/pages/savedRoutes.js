@@ -1,5 +1,4 @@
 // Saved Routes
-
 import React, { useEffect, useState } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
@@ -22,11 +21,8 @@ function SavedRoutes() {
 
   }
 
-
-
-  // const [place, setPlace] = useState({ city: "", state: "" });
   const [savedRoutes, setSavedRoutes] = useState({});
-  // const { city, state } = place;
+
   function loadRoutes() {
     API.getRoute()
       .then(res => {
@@ -44,32 +40,13 @@ function SavedRoutes() {
     
     API.changeComplete({ id, completed })
       .then((res) => {
-        console.log(res)
-      })
-      .catch(err => console.log(err));
-  }
-
-  const rateRoute = (route) => {
-    const num = [1, 2, 3, 4, 5]
-    const id = route._id
-
-    
-    const rating = {
-      routeRating: {
-        rating: 0
-      }
-    };
-    
-    API.changeComplete({ id, rating })
-      .then((res) => {
-        console.log(res)
+        // console.log(res)
+        console.log("Marked complete")
       })
       .catch(err => console.log(err));
   }
 
   function handleDelete(id) {
-    // event.preventDefault();
-
     API.deleteRoute(id)
     .then(res => {
       loadRoutes();
@@ -110,6 +87,7 @@ function SavedRoutes() {
                 {savedRoutes.map(route => (
                   <Saves key={route._id}
                     id={route._id}
+                    rating={route.routeRating.rating}
                     image={route.routeImage}
                     name={route.routeName}
                     type={route.RouteType}
@@ -126,8 +104,6 @@ function SavedRoutes() {
             ) : (
               <h3>No Saved Routes</h3>
             )}
-
-            {/* <Saves ></Saves> */}
           </Row>
         </Container>
       );

@@ -15,18 +15,18 @@ function Signup() {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setUserInput({...userInput, [name]: value});
-    console.log(userInput);
+    // console.log(userInput);
   };
   
   // When the form is submitted, search the API for routes
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("email: " + userInput.email);
-    console.log("password: " + userInput.password);
+    // console.log("email: " + userInput.email);
+    // console.log("password: " + userInput.password);
     if (userInput.email && userInput.password) {
       API.register(userInput)
         .then(res => {
-          console.log('res', res)
+          // console.log('res', res)
           alert('You are now registered! Please login')
           window.location.assign('/login')
         })
