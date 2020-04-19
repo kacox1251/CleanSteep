@@ -1,5 +1,4 @@
 // Saved Routes
-
 import React, { useEffect, useState } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
@@ -24,12 +23,11 @@ function SavedRoutes() {
 
   }
 
-
-
-  // const [place, setPlace] = useState({ city: "", state: "" });
   const [savedRoutes, setSavedRoutes] = useState({});
+
   let completedRoutes;
   // const { city, state } = place;
+
 
   function loadRoutes() {
     API.getRoute()
@@ -50,34 +48,20 @@ function SavedRoutes() {
     
     API.changeComplete({ id, completed })
       .then((res) => {
-        console.log(res)
+
+        // console.log(res)
+        console.log("Marked complete")
+        // console.log(res)
         // refreshes window to create new completed graph
         window.location.reload(false);
       })
       .catch(err => console.log(err));
   }
-
-  const rateRoute = (route) => {
-    const num = [1, 2, 3, 4, 5]
-    const id = route._id
-
-    
-    const rating = {
-      routeRating: {
-        rating: 0
-      }
-    };
-    
-    API.changeComplete({ id, rating })
-      .then((res) => {
-        console.log(res)
       })
       .catch(err => console.log(err));
   }
 
   function handleDelete(id) {
-    // event.preventDefault();
-
     API.deleteRoute(id)
     .then(res => {
       loadRoutes();
@@ -234,6 +218,7 @@ function SavedRoutes() {
                 {savedRoutes.map(route => (
                   <Saves key={route._id}
                     id={route._id}
+                    rating={route.routeRating.rating}
                     image={route.routeImage}
                     name={route.routeName}
                     type={route.RouteType}
@@ -250,6 +235,7 @@ function SavedRoutes() {
             ) : (
               <h3>No Saved Routes</h3>
             )}
+
             </Col>
             <Col size="md-7">
               <div className="centered">
@@ -262,7 +248,6 @@ function SavedRoutes() {
               </div>
             </Col>
 
-            {/* <Saves ></Saves> */}
           </Row>
         </Container>
       );

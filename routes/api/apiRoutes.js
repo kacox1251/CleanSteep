@@ -7,7 +7,7 @@ router.get('/routes',function(req, res) {
     // console.log("req.user", req.user)
   db.Routes.find({ user: req.user })
   .then(function(data) {
-      console.log("data", data)
+    //   console.log("data", data)
       res.json(data);
   })
   .catch(function(err) {
@@ -17,7 +17,7 @@ router.get('/routes',function(req, res) {
 });
 
 router.post("/routes", function(req, res) {
-    console.log("req.user", req.user)
+    // console.log("req.user", req.user)
     db.Routes.create({...req.body, user: req.user })
     .then(function(data) {
         // console.log("data", data)
@@ -29,7 +29,7 @@ router.post("/routes", function(req, res) {
 })
 
 router.put("/routes/:id", function(req, res) {
-    console.log({_id: req.params.id}, req.body)
+    // console.log({_id: req.params.id}, req.body)
     db.Routes.updateOne({_id: req.params.id}, req.body)
     .then(function(data) {
         res.json(data);

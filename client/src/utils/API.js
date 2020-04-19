@@ -12,7 +12,6 @@ export default {
         return axios.get("/api/data/routes");
     },
 
-      // Deletes the book with the given id
     deleteRoute: function(id) {
         return axios.delete("/api/data/routes/" + id);
     },
@@ -22,14 +21,14 @@ export default {
         return axios.put("/api/data/routes/" + id, completed);
     },
 
-    changeRating: function(id, rating) {
-      console.log("this here", id)
+    changeRating: function({id, rating}) {
+      console.log("this here", id, rating)
         return axios.put("/api/data/routes/" + id, rating);
     },
 
     // register a user
   register: function(userInput) {
-    console.log("userInput", userInput);
+    // console.log("userInput", userInput);
     return axios.post("/api/user", {
       username: userInput.email,
       password: userInput.password

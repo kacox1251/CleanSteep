@@ -1,5 +1,4 @@
 // Login Page
-
 import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
@@ -15,7 +14,7 @@ function Login() {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setUserInput({...userInput, [name]: value});
-    console.log(userInput)
+    // console.log(userInput)
   };
   
   // When the form is submitted, search the API for routes

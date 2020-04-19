@@ -31,8 +31,8 @@ router.post("/", (req, res) => {
 router.post(
   "/login",
   function (req, res, next) {
-    console.log("routes/authRoutes.js, login, req.body: ");
-    console.log(req.body);
+    // console.log("routes/authRoutes.js, login, req.body: ");
+    // console.log(req.body);
     next();
   },
   passport.authenticate("local"),
