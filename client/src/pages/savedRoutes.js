@@ -57,9 +57,6 @@ function SavedRoutes() {
       })
       .catch(err => console.log(err));
   }
-      })
-      .catch(err => console.log(err));
-  }
 
   function handleDelete(id) {
     API.deleteRoute(id)
@@ -100,15 +97,15 @@ function SavedRoutes() {
     });
 
     // set the dimensions and margins of the graph
-    var width = 450;
-    var height = 450;
-    var margin = 40;
+    const width = 450;
+    const height = 450;
+    const margin = 40;
 
     // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-    var radius = Math.min(width, height) / 2 - margin;
+    let radius = Math.min(width, height) / 2 - margin;
 
     // append the svg object to the div called 'graph'
-    var svg = d3.select("#graph")
+    let svg = d3.select("#graph")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -116,16 +113,16 @@ function SavedRoutes() {
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     // set the color scale
-    var color = d3.scaleOrdinal()
+    let color = d3.scaleOrdinal()
       .domain(routeGrades)
       .range(["#114641", "#1D5D4D", "#307456", "#498B5B", "#68A25E", "#8CB85F", "#B4CD5F", "#E2E062"])
 
     // Compute the position of each group on the pie:
-    var pie = d3.pie()
+    let pie = d3.pie()
       .value(function(d) {
           console.log(d);
           return d.value; })
-    var data_ready = pie(d3.entries(routeGrades))
+    let data_ready = pie(d3.entries(routeGrades))
 
     // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
     svg
@@ -143,12 +140,12 @@ function SavedRoutes() {
       .style("opacity", 0.7)
 
     // The arc generator
-    var arc = d3.arc()
+    let arc = d3.arc()
     .innerRadius(radius * 0.5)         
     .outerRadius(radius * 0.8)
 
     // Arc for label positioning
-    var outerArc = d3.arc()
+    let outerArc = d3.arc()
     .innerRadius(radius * 0.9)
     .outerRadius(radius * 0.9)
 
@@ -162,10 +159,10 @@ function SavedRoutes() {
     .style("fill", "none")
     .attr("stroke-width", 1)
     .attr('points', function(d) {
-      var posA = arc.centroid(d); // line insertion in the slice
-      var posB = outerArc.centroid(d); // line break: we use the other arc generator that has been built only for that
-      var posC = outerArc.centroid(d); // Label position = almost the same as posB
-      var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2 // we need the angle to see if the X position will be at the extreme right or extreme left
+      const posA = arc.centroid(d); // line insertion in the slice
+      const posB = outerArc.centroid(d); // line break: we use the other arc generator that has been built only for that
+      const posC = outerArc.centroid(d); // Label position = almost the same as posB
+      const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2 // we need the angle to see if the X position will be at the extreme right or extreme left
       posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
       console.log("posA", posA, "posB", posB, "posC", posC);
       return [posA, posB, posC]
@@ -179,15 +176,27 @@ function SavedRoutes() {
     .append('text')
     .text( function(d) { console.log(d.data.key) ; return d.data.key } )
     .attr('transform', function(d) {
-      var pos = outerArc.centroid(d);
-      var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
+      let pos = outerArc.centroid(d);
+      let midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
       pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
       return 'translate(' + pos + ')';
     })
     .style('text-anchor', function(d) {
-      var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
+      let midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
       return (midangle < Math.PI ? 'start' : 'end')
-    })
+    });
+
+    const routeInfoDiv = document.getElementById('graphRouteNames');
+    routeInfoDiv.innerHTML="";
+
+    //display name and route difficulty
+    graphedRoutes.forEach(function(d) { // forEach iterates through an array 
+      console.log(`Route name and difficulty ${d.routeName}, ${d.routeDifficulty}`);
+      let pElem = document.createElement('p');
+      pElem.innerHTML = `<b>Route Name:</b> ${d.routeName} <b>Route Grade:</b> ${d.routeDifficulty}`;
+      routeInfoDiv.append(pElem);
+    });
+
   }
 
   useEffect(() => {
@@ -245,6 +254,7 @@ function SavedRoutes() {
                 </select>
                 <h1 id="graphTitle">Completed Routes</h1>
                 <div id="graph"></div> 
+                <div id="graphRouteNames"></div>
               </div>
             </Col>
 
