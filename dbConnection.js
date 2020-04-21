@@ -3,7 +3,8 @@ mongoose.Promise = global.Promise;
 
 //your local database url
 //27017 is the default mongoDB port
-const uri = "mongodb://localhost:27017/cleansweep";
+// const uri = "mongodb://localhost:27017/cleansweep";
+const uri = `mongodb://CleanSteep:Project3@ds041160.mlab.com:41160/heroku_b8jlqg5z`;
 
 mongoose.set("debug", (collectionName, method, query, doc) => {
   console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
