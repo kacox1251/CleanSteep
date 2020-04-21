@@ -22,6 +22,8 @@ function Saves(props) {
             .catch(err => console.log(err));
     }
 
+    var locationString = props.location.join(', ');
+    console.log(locationString);
 
     return (
         <div className="card mb-3" style={{ maxWidth: 540}} data-id={props.id} data-lat={props.lat} data-long={props.long}>
@@ -32,10 +34,10 @@ function Saves(props) {
                 <div className="col-md-8">
                     <div className="card-body">
                         <h5 className="card-title">{props.name}</h5>
-                        <p className="card-text">Type: {props.type} | Location: {props.location}</p>
+                        <p className="card-text">Type: {props.type} | Location: {locationString}</p>
                         <p className="card-text text-right">
                             <small className="text-muted">
-                                Diffifulty: {props.difficulty} | Pitches: {props.pitches}
+                                Difficulty: {props.difficulty} | Pitches: {props.pitches}
                             </small>
                         </p>
                         <button style={{ marginLeft: 5, float: "right"}} type="button" className="btn btn-light" onClick={props.markComplete}><i className="fa fa-check-square"></i></button>

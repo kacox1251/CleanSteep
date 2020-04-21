@@ -13,7 +13,7 @@ function Searches(props) {
                         <p className="card-text">Type: {props.type} | Location: {props.location}</p>
                         <p className="card-text text-right">
                             <small className="text-muted">
-                                Diffifulty: {props.rating} | Pitches: {props.pitches}
+                                Difficulty: {props.rating} | Pitches: {props.pitches}
                             </small>
                             <button style={{ marginLeft: 50}} type="button" className="btn btn-outline-dark" onClick={props.handleAddRoute}>Save</button>
                         </p>
