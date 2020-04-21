@@ -47,6 +47,6 @@ export default {
   },
   // see if user is logged in
   status: function() {
-    return axios.get('/api/user')
+    return axios.get("/api/user");
   }
 }

@@ -11,10 +11,10 @@ const strategy = new LocalStrategy(
 				return done(err)
 			}
 			if (!user) {
-				return done(null, false, { message: 'Incorrect username/email' });
+				return done(null, false, { message: "Incorrect username/email" });
 			}
 			if (!user.checkPassword(password)) {
-				return done(null, false, { message: 'Incorrect password' });
+				return done(null, false, { message: "Incorrect password" });
 			}
 			return done(null, user);
 		})

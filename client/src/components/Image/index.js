@@ -9,7 +9,7 @@ export function Image(props) {
 
 
   useEffect(() => {
-    if (window.location.pathname == '/') {
+    if (window.location.pathname == "/") {
       TweenMax.fromTo(imgRef, 1, {x:25, y:340}, {x:60, y:300});
       TweenMax.fromTo(imgRef, 1, {x:60, y:300}, {x:20, y:240, delay: 1});
       TweenMax.fromTo(imgRef, 1, {x:20, y:240}, {x:70, y:150, delay: 2});

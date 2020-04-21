@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from 'react-rating';
+import Rating from "react-rating";
 import API from "../../utils/API"
 
 
@@ -22,7 +22,7 @@ function Saves(props) {
             .catch(err => console.log(err));
     }
 
-    var locationString = props.location.join(', ');
+    var locationString = props.location.join(", ");
     console.log(locationString);
 
     return (

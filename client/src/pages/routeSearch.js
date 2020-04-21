@@ -1,9 +1,9 @@
 // Route Search
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn, LogoutBtn } from "../components/Form";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Searches from "../components/Searched";
 import API from "../utils/API";
 

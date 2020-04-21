@@ -1,6 +1,6 @@
 // Login Page
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { LoginInput, InputFormBtn } from "../components/Form";
@@ -27,8 +27,8 @@ function Signup() {
       API.register(userInput)
         .then(res => {
           // console.log('res', res)
-          alert('You are now registered! Please login')
-          window.location.assign('/login')
+          alert("You are now registered! Please login");
+          window.location.assign("/login");
         })
         .catch(e => {
           console.log("error!", e);
