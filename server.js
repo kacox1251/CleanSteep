@@ -4,6 +4,7 @@ const passport = require("passport");
 const dbConnection = require("./dbConnection");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+var path = require("path");
 
 const routes = require("./routes");
 const app = express();
