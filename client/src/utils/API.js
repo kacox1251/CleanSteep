@@ -17,12 +17,12 @@ export default {
     },
 
     changeComplete: function({id, completed}) {
-      console.log("this here", id)
+      // console.log("this here", id)
         return axios.put("/api/data/routes/" + id, completed);
     },
 
     changeRating: function({id, rating}) {
-      console.log("this here", id, rating)
+      // console.log("this here", id, rating)
         return axios.put("/api/data/routes/" + id, rating);
     },
 

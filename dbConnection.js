@@ -5,6 +5,10 @@ mongoose.Promise = global.Promise;
 //27017 is the default mongoDB port
 const uri = "mongodb://localhost:27017/cleansweep";
 
+mongoose.set("debug", (collectionName, method, query, doc) => {
+  console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
+});
+
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || uri, {useNewUrlParser: true, useUninifiedTopology: true}).then(
   () => {

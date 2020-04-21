@@ -33,12 +33,13 @@ const RouteSchema = new Schema({
       type: String
     },
 
+    completed: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    
     routeRating: {
-      completed: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
       comments: {
         type: String,
         default: "",
