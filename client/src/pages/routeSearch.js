@@ -1,9 +1,9 @@
 // Route Search
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn, LogoutBtn } from "../components/Form";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Searches from "../components/Searched";
 import API from "../utils/API";
 
@@ -76,7 +76,7 @@ function RouteSearch() {
     return (
         <Container fluid>
           <Row>
-            <Col size="md-6">
+            <Col size="md-9">
               <Jumbotron>
                 <h1>Search Page</h1>
                 <Link to="/routes" >
@@ -120,11 +120,6 @@ function RouteSearch() {
             ) : (
               <h3>No Results to Display</h3>
             )}
-            </Col>
-            <Col size="md-6">
-              <Jumbotron>
-                <h1>Saved Routes</h1>
-              </Jumbotron>
             </Col>
           </Row>
         </Container>

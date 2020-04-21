@@ -1,5 +1,5 @@
 // Login Page
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { LoginInput, InputFormBtn } from "../components/Form";

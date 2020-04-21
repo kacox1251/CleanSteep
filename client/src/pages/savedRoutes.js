@@ -26,7 +26,6 @@ function SavedRoutes() {
   const [savedRoutes, setSavedRoutes] = useState({});
   // const { city, state } = place;
 
-
   function loadRoutes() {
     API.getRoute()
       .then(res => {
@@ -43,15 +42,15 @@ function SavedRoutes() {
     };
     
     API.changeComplete({ id, completed })
-      .then((res) => {
-
-        // console.log(res)
-        console.log("Marked complete");
-        
-        // refreshes window to create new completed graph
-        window.location.reload(false);
-      })
-      .catch(err => console.log(err));
+    .then((res) => {
+      
+      // console.log(res)
+      console.log("Marked complete");
+      
+      // refreshes window to create new completed graph
+      window.location.reload(false);
+    })
+    .catch(err => console.log(err));
   }
 
   
@@ -232,12 +231,13 @@ function SavedRoutes() {
                     rating={route.routeRating.rating}
                     image={route.routeImage}
                     name={route.routeName}
-                    type={route.RouteType}
+                    type={route.routeType}
                     difficulty={route.routeDifficulty}
                     pitches={route.routePitch}
                     location={route.routeLocation.location}
                     lat={route.routeLocation.longitude}
                     long={route.routeLocation.latitude}
+                    completed={route.routeRating.completed}
                     handleDelete={() => handleDelete(route._id)}
                     markComplete={() => markComplete(route)}
                   />

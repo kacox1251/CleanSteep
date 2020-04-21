@@ -3,7 +3,7 @@ const router = require("express").Router();
 const db = require("../../models")
 const axios = require("axios")
 
-router.get('/routes',function(req, res) {
+router.get("/routes",function(req, res) {
     // console.log("req.user", req.user)
   db.Routes.find({ user: req.user })
   .then(function(data) {
