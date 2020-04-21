@@ -37,7 +37,7 @@ router.post(
   },
   passport.authenticate("local"),
   (req, res) => {
-    console.log("logged in", req.user);
+    // console.log("logged in", req.user);
     var userInfo = {
       _id: req.user._id,
       username: req.user.username
@@ -47,8 +47,8 @@ router.post(
 );
 
 router.get("/", (req, res, next) => {
-  console.log("===== user!!======");
-  console.log(req.user);
+  // console.log("===== user!!======");
+  // console.log(req.user);
   if (req.user) {
     res.json({ user: req.user });
   } else {

@@ -2,6 +2,7 @@ import React from "react";
 import Rating from 'react-rating';
 import API from "../../utils/API"
 
+
 function Saves(props) {
 
     function onRatingChange(number) {
@@ -9,6 +10,7 @@ function Saves(props) {
         const rating = {
             routeRating: {
                 rating: number
+                
             }
         };
         
@@ -36,8 +38,8 @@ function Saves(props) {
                                 Diffifulty: {props.difficulty} | Pitches: {props.pitches}
                             </small>
                         </p>
-                        <button style={{ marginLeft: 5}} type="button" className="btn btn-outline-dark" onClick={props.markComplete}><i className="fa fa-check-square"></i></button>
-                        <button style={{ marginLeft: 5}} type="button" className="btn btn-outline-dark" onClick={props.handleDelete} aria-label="Delete"><i className="fa fa-trash"></i></button>
+                        <button style={{ marginLeft: 5, float: "right"}} type="button" className="btn btn-light" onClick={props.markComplete}><i className="fa fa-check-square"></i></button>
+                        <button style={{ marginLeft: 5, float: "right"}} type="button" className="btn btn-light" onClick={props.handleDelete} aria-label="Delete"><i className="fa fa-trash"></i></button>
                         <div>
                             <Rating
                                 onChange={onRatingChange}

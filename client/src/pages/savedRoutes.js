@@ -32,29 +32,29 @@ function SavedRoutes() {
       .then(res => {
         setSavedRoutes(res.data);
         createGraph(res.data);
-        console.log("res.data", res.data);
+        // console.log("res.data", res.data);
       }).catch(err => console.log(err));
   }
 
   const markComplete = (route) => {
-    const id = route._id
+    const id = route._id;
     const completed = {
-      routeRating: {
         completed: true
-      }
     };
     
     API.changeComplete({ id, completed })
       .then((res) => {
 
         // console.log(res)
-        console.log("Marked complete")
-        // console.log(res)
+        console.log("Marked complete");
+        
         // refreshes window to create new completed graph
         window.location.reload(false);
       })
       .catch(err => console.log(err));
   }
+
+  
 
   function handleDelete(id) {
     API.deleteRoute(id)
@@ -72,26 +72,26 @@ function SavedRoutes() {
     let routeOptions = document.getElementById("routeOptions").value;
     document.getElementById("graph").innerHTML = "";
 
-    console.log("routeOptions", routeOptions);
-    console.log(data);
+    // console.log("routeOptions", routeOptions);
+    // console.log(data);
     if(data === undefined) {
       return;
     } 
     if (routeOptions === "complete") {
       graphedRoutes = data.filter(function(route) {
         document.getElementById("graphTitle").innerHTML = "Completed Routes";
-        return route.routeRating.completed;
+        return route.completed;
       });
     } else {
       graphedRoutes = data.filter(function(route) {
         document.getElementById("graphTitle").innerHTML = "Incomplete Routes";
-        return !route.routeRating.completed;
+        return !route.completed;
       });
     }
-    console.log("Array to graph: ", graphedRoutes);
+    // console.log("Array to graph: ", graphedRoutes);
 
     graphedRoutes.forEach(function(d) { // forEach iterates through an array 
-      console.log(d.routeDifficulty);
+      // console.log(d.routeDifficulty);
       routeGrades[d.routeDifficulty] = (routeGrades[d.routeDifficulty] || 0) + 1; // create new item if it doesn't exist
     });
 
@@ -119,7 +119,7 @@ function SavedRoutes() {
     // Compute the position of each group on the pie:
     let pie = d3.pie()
       .value(function(d) {
-          console.log(d);
+          // console.log(d);
           return d.value; });
     let data_ready = pie(d3.entries(routeGrades));
 
@@ -163,7 +163,7 @@ function SavedRoutes() {
       const posC = outerArc.centroid(d); // Label position = almost the same as posB
       const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2; // we need the angle to see if the X position will be at the extreme right or extreme left
       posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
-      console.log("posA", posA, "posB", posB, "posC", posC);
+      // console.log("posA", posA, "posB", posB, "posC", posC);
       return [posA, posB, posC];
     });
 
@@ -174,7 +174,7 @@ function SavedRoutes() {
     .enter()
     .append("text")
     .text( function(d) { 
-      console.log("d.data.key: " + d.data.key, " d.data.value: " + d.data.value);
+      // console.log("d.data.key: " + d.data.key, " d.data.value: " + d.data.value);
       return d.data.key; 
     })
     .attr("transform", function(d) {
@@ -193,7 +193,7 @@ function SavedRoutes() {
 
     //display name and route difficulty
     graphedRoutes.forEach(function(d) { // forEach iterates through an array 
-      console.log(`Route name and difficulty ${d.routeName}, ${d.routeDifficulty}`);
+      // console.log(`Route name and difficulty ${d.routeName}, ${d.routeDifficulty}`);
       let pElem = document.createElement("p");
       pElem.innerHTML = `<b>Route Name:</b> ${d.routeName} <b>Route Grade:</b> ${d.routeDifficulty}`;
       routeInfoDiv.append(pElem);
@@ -205,7 +205,7 @@ function SavedRoutes() {
     loadRoutes()
   }, [])
 
-  console.log(savedRoutes)
+  // console.log(savedRoutes)
   
     return (
         <Container fluid>

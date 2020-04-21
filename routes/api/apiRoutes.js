@@ -30,7 +30,8 @@ router.post("/routes", function(req, res) {
 
 router.put("/routes/:id", function(req, res) {
     // console.log({_id: req.params.id}, req.body)
-    db.Routes.updateOne({_id: req.params.id}, req.body)
+
+    db.Routes.updateOne({_id: req.params.id}, {$set: req.body})
     .then(function(data) {
         res.json(data);
     })
