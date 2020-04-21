@@ -18,6 +18,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
 
+
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Add routes, both API and view
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+app.use(routes);
+
 // Sessions
 app.use(
   session({
@@ -28,20 +41,9 @@ app.use(
   })
 );
 
-// passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Add routes, both API and view
-app.use(routes);
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
-// app.get('*',(req, res) => {
-//   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-// });
+app.get('*',(req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 
 // Start the API server
 app.listen(PORT, function() {
